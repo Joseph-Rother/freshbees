@@ -99,6 +99,7 @@ def draw():
                 grid.create_rectangle(x*tileSize, y*tileSize, x*tileSize+tileSize, y*tileSize+tileSize, fill="white")
     for room in roomLocations:
         grid.create_rectangle(room[0]*tileSize, room[1]*tileSize, room[0]*tileSize+tileSize, room[1]*tileSize+tileSize, fill="red")
+
     
     
     root.update()
@@ -112,6 +113,7 @@ isFullyConnectedLabel.pack(side=tk.LEFT)
 
 draw()
 root.mainloop()
+
 #endregion
 
 
