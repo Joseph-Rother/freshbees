@@ -98,10 +98,8 @@ def draw():
             else:
                 grid.create_rectangle(x*tileSize, y*tileSize, x*tileSize+tileSize, y*tileSize+tileSize, fill="white")
     for room in roomLocations:
-        grid.create_rectangle(room[0]*tileSize, room[1]*tileSize, room[0]*tileSize+tileSize, room[1]*tileSize+tileSize, fill="red")
-
-    
-    
+        grid.create_rectangle(room[0]*tileSize, room[1]*tileSize, room[0]*tileSize+tileSize, room[1]*tileSize+tileSize, fill="black")
+        grid.create_oval(room[0]*tileSize+tileSize//4, room[1]*tileSize+tileSize//4, room[0]*tileSize+3*tileSize//4, room[1]*tileSize+3*tileSize//4, fill="white")
     root.update()
 
 grid.bind("<Button-1>", onclick)
