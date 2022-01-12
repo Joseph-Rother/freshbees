@@ -70,21 +70,22 @@ def isFullyConnected():
 
 #endregion
 #region GUI
+tileSize = 20
+
 root = tk.Tk()
-grid = tk.Canvas(root, height=gridHeight*10, width=gridWidth*10)
+grid = tk.Canvas(root, height=gridHeight*tileSize, width=gridWidth*tileSize)
 infoPanel = tk.Frame(root)
 isFullyConnectedLabel = tk.Label(infoPanel, text="Fully Connected: False")
-
 def onclick(event):
     #left clicking adds or removes a room
     #right clicking adds or removes a hallway
     if event.num == 1:
-        if (event.x//10, event.y//10) in roomLocations:
-            roomLocations.remove((event.x//10, event.y//10))
+        if (event.x//tileSize, event.y//tileSize) in roomLocations:
+            roomLocations.remove((event.x//tileSize, event.y//tileSize))
         else:
-            roomLocations.append((event.x//10, event.y//10))
+            roomLocations.append((event.x//tileSize, event.y//tileSize))
     elif event.num == 3:
-        hallwayGrid[event.x//10][event.y//10] = not hallwayGrid[event.x//10][event.y//10]
+        hallwayGrid[event.x//tileSize][event.y//tileSize] = not hallwayGrid[event.x//tileSize][event.y//tileSize]
     isFullyConnectedLabel.config(text="Fully Connected: " + str(isFullyConnected()))
     draw()
 
@@ -93,11 +94,12 @@ def draw():
     for x in range(gridWidth):
         for y in range(gridHeight):
             if hallwayGrid[x][y]:
-                grid.create_rectangle(x*10, y*10, x*10+10, y*10+10, fill="black")
+                grid.create_rectangle(x*tileSize, y*tileSize, x*tileSize+tileSize, y*tileSize+tileSize, fill="black")
             else:
-                grid.create_rectangle(x*10, y*10, x*10+10, y*10+10, fill="white")
+                grid.create_rectangle(x*tileSize, y*tileSize, x*tileSize+tileSize, y*tileSize+tileSize, fill="white")
     for room in roomLocations:
-        grid.create_rectangle(room[0]*10, room[1]*10, room[0]*10+10, room[1]*10+10, fill="red")
+        grid.create_rectangle(room[0]*tileSize, room[1]*tileSize, room[0]*tileSize+tileSize, room[1]*tileSize+tileSize, fill="red")
+
     
     
     root.update()
