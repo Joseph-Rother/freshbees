@@ -112,7 +112,6 @@ isFullyConnectedLabel.pack(side=tk.LEFT)
 
 draw()
 root.mainloop()
-
 #endregion
 
 
